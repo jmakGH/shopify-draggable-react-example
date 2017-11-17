@@ -6,6 +6,10 @@ will continually be added to cover the other parts of the Draggable library.
 
 Read more about [Draggable](https://github.com/Shopify/draggable).
 
+## Demo
+
+Checkout the [demo](https://jmakgh.github.io/shopify-draggable-react-example/).
+
 ## Getting Started
 
 After cloning the repo, all you have to do is run `npm start` and visit `localhost:3000`.
