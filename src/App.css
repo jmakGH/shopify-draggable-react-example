@@ -1,0 +1,12 @@
+.App {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+}
+
+.App-body {
+  margin: 0 auto;
+  max-width: 780px;
+}

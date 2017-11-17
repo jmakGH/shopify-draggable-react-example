@@ -1,0 +1,13 @@
+.BlockGenerator {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.BlockGenerator > * {
+  margin-left: 4px;
+  margin-top: 4px;
+}
+
+.BlockGenerator:first-child {
+  margin-left: 0;
+}
