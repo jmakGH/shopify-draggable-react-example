@@ -1,13 +1,107 @@
+/**
+ * 1. Use flexbox to setup a list that wraps.
+ * 2. Adjust left margin to re-center blocks.
+ */
+
 .BlockGenerator {
   display: flex;
   flex-wrap: wrap;
+  margin-left: -8px;
 }
+
+/**
+ * Small gutter between all the generated blocks.
+ */
 
 .BlockGenerator > * {
-  margin-left: 4px;
-  margin-top: 4px;
+  margin-left: 8px;
+  margin-top: 8px;
 }
 
-.BlockGenerator:first-child {
-  margin-left: 0;
+/**
+ * 1. Center content using flexbox.
+ * 2. Grab cursor.
+ * 3. Set relative position to allow absolute positioned children.
+ * 4. Small transition for the hover transform.
+ * 5. Hide overflow to prevent flash circle from showing outside borders.
+ */
+
+.Block {
+  align-items: center;
+  cursor: grab;
+  display: flex;
+  height: 40px;
+  justify-content: center;
+  overflow: hidden;
+  position: relative;
+  transition: transform 0.3s ease-in-out;
+  width: 100px;
+}
+
+/**
+ * Slightly raise on hover.
+ */
+
+.Block:hover {
+  transform: translate(0, -2px);
+}
+
+/**
+ * Background for drag state.
+ * 1. Set new stacking order so that it sits on top of other content.
+ * 2. Should fill the area of its parent.
+ * 3. Hide by default.
+ */
+
+.Block:before {
+  background: #BDBDBD;
+  content: '';
+  height: 100%;
+  left: 0;
+  opacity: 0;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  z-index: 1;
+}
+
+/**
+ * Show background on drag.
+ */
+
+.Block-dragging:before {
+  opacity: 1;
+}
+
+/**
+ * Flashing circle in the foreground for drag state.
+ * 1. Set stacking order to sit above :before psuedo element.
+ * 2. Center circle to .Block element.
+ * 3. Pulsate animation.
+ */
+.Block-dragging:after {
+  animation: pulsate 1.5s infinite;
+  background-color: #E0E0E0;
+  border-radius: 50%;
+  content: '';
+  height: 60px;
+  left: 20px;
+  position: absolute;
+  width: 60px;
+  top: -10px;
+  z-index: 2;
+}
+
+/**
+ * Pulsate animation using opacity change.
+ */
+
+@keyframes pulsate {
+  0, 100% {
+    transform: scale(0);
+  }
+
+  50% {
+    transform: scale(1.3);
+  }
 }

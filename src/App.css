@@ -2,11 +2,45 @@
   align-items: center;
   display: flex;
   flex-direction: column;
-  justify-content: center;
   text-align: center;
 }
 
 .App-body {
   margin: 0 auto;
   max-width: 780px;
+  padding-bottom: 40px;
+}
+
+.App-body-count {
+  display: flex;
+  flex-wrap: nowrap;
+  margin-bottom: 80px;
+  margin-top: 40px;
+}
+
+.App-body-count-text {
+  color: #E0E0E0;
+  font-size: 60px;
+  letter-spacing: -1px;
+  margin: 0;
+  text-align: left;
+  text-transform: uppercase;
+}
+
+.App-body-count-input {
+  border: none;
+  color: #E0E0E0;
+  font-size: 180px;
+  margin-left: 20px;
+  width: 300px;
+}
+
+/* Hide HTML5 Up and Down arrows. */
+input[type="number"]::-webkit-outer-spin-button, input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+input[type="number"] {
+    -moz-appearance: textfield;
 }

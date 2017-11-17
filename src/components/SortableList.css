@@ -1,0 +1,19 @@
+/**
+ * Hide dragging source element by default.
+ */
+
+.hideDragSource {
+  opacity: 0;
+}
+
+/**
+ * 1. Grabbing cursor.
+ * 2. Reset transition duration to ignore any existing on the source element.
+ * 3. Increase z-index to make sure dragged item sits on top of other elements.
+ */
+
+.defaultMirror {
+  cursor: grabbing;
+  transition-duration: 0s !important;
+  z-index: 10;
+}
