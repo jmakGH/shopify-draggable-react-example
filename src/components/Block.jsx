@@ -1,10 +1,10 @@
 import PropTypes from 'prop-types';
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 
 const random255 = () => Math.floor(Math.random() * 256);
 const randomColor = () => `rgb(${random255()}, ${random255()}, ${random255()})`;
 
-export default class  Block extends Component {
+export default class  Block extends PureComponent {
   static propTypes = {
     className: PropTypes.string,
     label: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
@@ -15,8 +15,11 @@ export default class  Block extends Component {
     label: '#',
   }
 
-  shouldComponentUpdate({ label }) {
-    return label !== this.props.label;
+  // We'll only generate the background style once when a Block is created.
+  constructor(props) {
+    super(props);
+
+    this.style = { backgroundColor: randomColor() };
   }
 
   render() {
@@ -25,7 +28,7 @@ export default class  Block extends Component {
     return (
       <div
         className={className}
-        style={{backgroundColor: randomColor()}}
+        style={this.style}
         {...props}
       >
         {label}
