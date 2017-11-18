@@ -10,8 +10,11 @@ class App extends Component {
   }
 
   onChangeCount = ({ target }) => {
-    // Clamp value
-    const blockCount = Math.min(Math.max(parseInt(target.value, 10), 0), 100);
+    // Prevent NaN values.
+    const value = target.value || 0;
+
+    // Clamp value. Setting a max of 100 blocks for now.
+    const blockCount = Math.min(Math.max(parseInt(value, 10), 0), 100);
 
     this.setState({ blockCount });
   }
@@ -26,6 +29,9 @@ class App extends Component {
       blocks.push(i + 1);
     }
 
+    // Use a blank value for 0 in input to prevent leading zeroes such as '01'.
+    const inputValue = blockCount > 0 ? blockCount : '';
+
     return (
       <WindowHeight>
         {({ height }) => (
@@ -39,7 +45,7 @@ class App extends Component {
                   className="App-body-count-input"
                   onChange={this.onChangeCount}
                   type="number"
-                  value={blockCount}
+                  value={inputValue}
                 />
               </div>
               <BlockGenerator blocks={blocks} />
